@@ -1,8 +1,7 @@
-const express = require('express');
-import app from './server/app';
+const app = require('./server/app');
 
 // database
-//require('./database');
+require('./database');
 
 // starting the server
 app.listen(app.get('port'), ()=>{
