@@ -50,3 +50,33 @@ exports.list = async(req, res) => {
             res.json(videogames);
         });
 }
+
+exports.remove = (req, res) => {
+    let videogame = req.videogame;
+    videogame.remove((err, deleteVideogame) => {
+        if (err) {
+            return res.status(400).json({error: errorHandler(err)});
+        }
+        res.json({message: "Videogame was successfully deleted"});
+    });
+}
+
+exports.videogameById = async(req, res, next, id) => {
+    await Videogame.findById(id)
+        .populate("category")
+        .exec((err, videogame) => {
+            if (err || !videogame) {
+                return res.json({error: "Videogame was not found or does not exist"});
+            }
+            req.videogame = videogame;
+            next();
+        });
+}
+
+exports.photo = (req, res, next) => {
+    if (req.videogame.photo.data) {
+        res.set('Content-Type', req.videogame.photo.contentType);
+        return res.send(req.videogame.photo.data);
+    }
+    next();
+}
