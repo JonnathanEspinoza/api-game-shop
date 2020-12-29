@@ -1,2 +1,8 @@
+# lista de variables
 .env
+
+# Modulos
 node_modules
+
+# Documentacion
+docs
