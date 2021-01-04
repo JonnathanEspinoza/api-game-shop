@@ -1,5 +1,13 @@
 const mongoose = require('mongoose');
 
+/**
+ * The data-layer for a Category of videogame
+ * @module Models
+ */
+/**
+ * Category Schema
+ * @constructor Category
+ */
 const categorySchema = new mongoose.Schema(
     {
         name: {

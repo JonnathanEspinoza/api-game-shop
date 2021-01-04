@@ -5,8 +5,16 @@ const fs = require('fs');
 const Videogame = require('../models/Videogame');
 const { errorHandler } = require('../helpers/dberrorHandler');
 
+/** 
+ * My Videogame Controller
+ * @module VideogameController
+*/
+/**
+ * Create a Videogame
+ * @param {object} req 
+ * @param {*} res 
+ */
 exports.create = (req, res) => {
-    console.log("entrastes");
     let form = new formidable.IncomingForm();
     form.keepExtensions = true;
     form.parse(req, async(err, fields, files) => {

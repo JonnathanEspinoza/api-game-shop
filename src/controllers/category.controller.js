@@ -1,7 +1,16 @@
+//@ts-check
 const Category = require('../models/Category');
 const { errorHandler } = require('../helpers/dberrorHandler');
 
-// Crear una categoria
+/**
+ * My Category Controllers
+ * @module CategoryController
+ */
+/**
+ * Create a category
+ * @param {{body:{name:string}}} req 
+ * @param {*} res 
+ */
 exports.create = async (req, res) => {
     const category = new Category(req.body);
     await category.save((err, data) => {
@@ -12,7 +21,11 @@ exports.create = async (req, res) => {
     });
 };
 
-// Listar todas las categorias
+/**
+ * List all Categories
+ * @param {*} req 
+ * @param {*} res 
+ */
 exports.list = async (req, res) => {
     const category = Category.find().exec((err, data) => {
         if (err) {
@@ -22,7 +35,11 @@ exports.list = async (req, res) => {
     });
 }
 
-// Eliminar una categoria
+/**
+ * Remove a Category
+ * @param {{category:object}} req 
+ * @param {*} res 
+ */
 exports.remove = (req, res) => {
     let category = req.category;
     category.remove((err, data) => {
@@ -35,7 +52,13 @@ exports.remove = (req, res) => {
     });
 }
 
-// Buscar categoria por id
+/**
+ * Search a Category by Id
+ * @param {object} req 
+ * @param {*} res 
+ * @param {*} next 
+ * @param {string} id id category
+ */
 exports.categoryById = async(req, res, next, id) => {
     await Category.findById(id).exec( (err, data) => {
         if (err || !data) {

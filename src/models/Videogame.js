@@ -1,6 +1,14 @@
 const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Schema;
 
+/**
+ * The data-layer for a Videogames
+ * @module Models
+ */
+/**
+ * Videogame Schema
+ * @constructor Videogame
+ */
 const videogameSchema = new mongoose.Schema(
     {
         name: {
