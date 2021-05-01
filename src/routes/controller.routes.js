@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const { list, create, remove, categoryById } = require('../controllers/category.controller');
+const { userById } = require('../controllers/authController');
 
 /**
  * The API routes of the controller
@@ -18,7 +19,7 @@ router.get('/categories', list);
  * @path {POST} /api/category/create
  * @body {String} name is the category name
  */
-router.post('/create', create);
+router.post('/create/:userId', create);
 
 /**
  * @name DeleteCategorie delete a categorie
@@ -29,5 +30,6 @@ router.delete('/:categoryId', remove);
 
 // metodo para obtener el parametro
 router.param('categoryId', categoryById);
+router.param('userId', userById);
 
 module.exports=router;
