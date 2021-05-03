@@ -59,6 +59,11 @@ exports.list = async(req, res) => {
         });
 }
 
+exports.read = (req, res) => {
+    req.videogame.photo = undefined;
+    return res.json(req.videogame);
+}
+
 exports.remove = (req, res) => {
     let videogame = req.videogame;
     videogame.remove((err, deleteVideogame) => {

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { list, create, remove, videogameById, photo} = require('../controllers/videogame.controller');
+const { list, create, read, remove, videogameById, photo} = require('../controllers/videogame.controller');
 
 /**
  * The API routes of the videogames
@@ -31,6 +31,9 @@ router.get('/photo/:videogameId', photo);
  * @body {File} photo is the image as a file
  */
 router.post('/create', create);
+
+// get info videogame
+router.get('/:videogameId', read);
 
 /**
  * @name DeleteVideogame delete a videogame
